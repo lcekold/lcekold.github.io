@@ -1,0 +1,10 @@
+^D:\CODE\CMAKE\CH3_2_PROJECT\BULID\CMAKEFILES\5E3B93C02743B89C91AD44C78C5263DE\GENERATE.STAMP.RULE
+setlocal
+C:\Industrialsoftware\CMAKE\bin\cmake.exe -SD:/CODE/CMAKE/ch3_2_project -BD:/CODE/CMAKE/ch3_2_project/bulid --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/CODE/CMAKE/ch3_2_project/bulid/Animal.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

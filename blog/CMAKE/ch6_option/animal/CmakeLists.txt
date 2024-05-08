@@ -1,0 +1,20 @@
+option(USE_CATTWO "Use cat two" ON)   # 定义了一个名为USE_CATTWO的选项，并给出了一个描述字符串"Use cat two"，默认值为ON，表示默认情况下该选项为启用状态。
+if(USE_CATTWO)
+    set(SRC cat.cpp dog.cpp cattwo.cpp) # 若USE_CATTWO为真，则将SRC设置为包含cat.cpp、dog.cpp和cattwo.cpp三个文件的列表；若USE_CATTWO为假，则将SRC设置为包含cat.cpp和dog.cpp两个文件的列表。
+else()
+    set(SRC cat.cpp dog.cpp)
+endif()
+
+
+add_library(AnimalLib ${SRC})  # 创建一个名为AnimalLib的库，并将SRC中指定的源文件添加到该库中。
+
+
+if(USE_CATTWO)
+    target_compile_definitions(AnimalLib PRIVATE "USE_CATTWO")  # 为AnimalLib目标添加一个USE_CATTWO的编译定义，值为私有的，表示只在AnimalLib内部有效。
+endif()
+
+# 解释：
+
+# CMakeLists.txt 文件中定义的变量在 C++ 文件中是无法直接识别的。但是，CMake 在生成编译文件时会根据 CMakeLists.txt 中的设置生成相应的编译选项，比如生成预处理器定义、编译标志等，这些选项在编译 C++ 文件时会起作用。
+
+# 在你的例子中，CMakeLists.txt 中的 target_compile_definitions() 命令会将 USE_CATTWO 添加为编译器的预处理器定义。这意味着在编译 C++ 文件时，预处理器会根据该定义在代码中执行条件编译。也就是说，在 C++ 文件中可以通过 #ifdef USE_CATTWO 来检查 USE_CATTWO 是否被定义，并根据其值执行不同的代码。

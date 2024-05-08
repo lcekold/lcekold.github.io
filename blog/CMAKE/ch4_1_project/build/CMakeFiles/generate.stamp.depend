@@ -1,0 +1,21 @@
+# CMake generation dependency list for this directory.
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/CMakeCXXInformation.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/CMakeGenericSystem.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/CMakeRCInformation.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/Compiler/MSVC-CXX.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/Compiler/MSVC.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/Platform/Windows-MSVC.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/Platform/Windows.cmake
+C:/Industrialsoftware/CMAKE/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake
+D:/CODE/CMAKE/ch4_1_project/CMakeLists.txt
+D:/CODE/CMAKE/ch4_1_project/build/CMakeFiles/3.29.1/CMakeCXXCompiler.cmake
+D:/CODE/CMAKE/ch4_1_project/build/CMakeFiles/3.29.1/CMakeRCCompiler.cmake
+D:/CODE/CMAKE/ch4_1_project/build/CMakeFiles/3.29.1/CMakeSystem.cmake
