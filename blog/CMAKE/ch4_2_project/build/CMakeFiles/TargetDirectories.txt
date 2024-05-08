@@ -1,3 +1,0 @@
-D:/CODE/CMAKE/ch4_2_project/build/CMakeFiles/app.dir
-D:/CODE/CMAKE/ch4_2_project/build/CMakeFiles/ALL_BUILD.dir
-D:/CODE/CMAKE/ch4_2_project/build/CMakeFiles/ZERO_CHECK.dir
