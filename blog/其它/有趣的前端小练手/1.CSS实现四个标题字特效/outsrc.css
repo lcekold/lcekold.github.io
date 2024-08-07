@@ -1,0 +1,64 @@
+html{
+    font-size:15px;
+}
+
+body{
+    display:flex;
+    justify-content:center;  /*水平轴居中对齐*/
+    align-items:center;    /*垂直轴居中对齐*/
+    min-height:100vh;
+    font-family:Helvetica;
+    flex-direction:column;/*用于指定 flexbox 容器中子元素的排列方式。当使用该属性时，子元素会垂直排列，沿主轴方向从上到下*/
+}
+
+h1{
+    font-size:6rem;
+}
+
+span{
+    display:inline-block;
+}
+
+h1.animate span{
+    animation-name:var(--animation);/*设置动画的名称为变量 "--animation" 的值。*/
+    animation-duration:.4s; /*设置动画的持续时间为 0.4 秒。*/
+    animation-timing-function:ease-in-out;/*设置动画的缓动函数为 "ease-in-out"，表示动画在开始和结束时都具有缓动效果。*/
+    animation-delay:var(--delay);/*设置动画的延迟时间为变量 "--delay" 的值。*/
+}
+
+
+@keyframes jump{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50% {
+        transform:translateY(-10px);
+    }
+}
+
+@keyframes pop{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+@keyframes flip{
+    0%,100%{
+        transform:rotateY(0deg);
+    }
+    50%{
+        transform:rotateY(90deg);
+    }
+}
+
+@keyframes blink{
+    0%,100%{
+        color:inherit;
+    }
+    50%{
+        color:yellow;
+    }
+}

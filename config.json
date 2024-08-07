@@ -1,0 +1,8 @@
+{
+    "username": "lcekold", 
+    "homePage": "blog/ABOUT/About Me.md",
+    "isCommentOn":true,
+    "clientID":"1eff9b2857ee45fbeca4",
+    "clientSecret":"133d76a7181f1e4126d123c82be6c4c791cc051b",
+    "commentRepo":"blogComment"
+}
