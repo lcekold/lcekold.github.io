@@ -383,7 +383,7 @@ cap.set(cv2.CAP_PROP_WB_TEMPERATURE, 4600)
 
 减小白平衡：
 
-<div><img src="https://cdn.jsdelivr.net/gh/lcekold/blogimage@main/Network/20251201003740916.png"></div>
+<div><img src="https://cdn.jsdelivr.net/gh/lcekold/blogimage@main/Network/20251201015341746.png"/></div>
 
 ## 4.5、饱和度 (Saturation)
 
@@ -516,107 +516,309 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)  # 高度
 
 降低分辨率：
 
-![alt text](image.png)
+<div><img src="https://cdn.jsdelivr.net/gh/lcekold/blogimage@main/Network/20251201014629485.png"></div>
 
 # 五、摄像头控制面板调整参数
+
+我手头当前暂未有可以二次开发的摄像头，所以这里以图片进行演示
 
 ```py
 import cv2
 import numpy as np
+import os
 
-class CameraControlPanel:
-    def __init__(self, camera_index=0):
-        self.camera = cv2.VideoCapture(camera_index)
-        
-        # 可调参数
-        self.params = {
-            'brightness': {'current': 128, 'min': 0, 'max': 255, 'prop': cv2.CAP_PROP_BRIGHTNESS},
-            'contrast': {'current': 128, 'min': 0, 'max': 255, 'prop': cv2.CAP_PROP_CONTRAST},
-            'saturation': {'current': 128, 'min': 0, 'max': 255, 'prop': cv2.CAP_PROP_SATURATION},
-            'exposure': {'current': -5, 'min': -13, 'max': -1, 'prop': cv2.CAP_PROP_EXPOSURE},
-            'focus': {'current': 128, 'min': 0, 'max': 255, 'prop': cv2.CAP_PROP_FOCUS},
-        }
-        
-        self.window_name = 'Camera Control Panel'
-        cv2.namedWindow(self.window_name)
-        
-        # 创建滑动条
-        for name, param in self.params.items():
-            cv2.createTrackbar(
-                name,
-                self.window_name,
-                param['current'],
-                param['max'] - param['min'],
-                lambda x, n=name: self.on_trackbar_change(n, x)
-            )
+# --- 1. 初始化和设置 ---
+
+# 将图片路径设为相对于脚本文件所在目录的路径，确保从任意工作目录运行都能找到图片
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+IMAGE_PATH = os.path.join(SCRIPT_DIR, 'test_image.jpg')
+
+# 如果没有测试图，创建一个简单的空白图像作为示例
+if not os.path.exists(IMAGE_PATH):
+    print(f"警告：未找到图片 '{IMAGE_PATH}'，使用默认黑色图像代替。")
+    img_original = np.zeros((400, 600, 3), dtype=np.uint8) + 100 # 灰色图像
+else:
+    img_original = cv2.imread(IMAGE_PATH)
+
+if img_original is None:
+    print(f"错误：无法读取图片文件 '{IMAGE_PATH}'，请检查路径。")
+    exit()
+
+# 获取原始图片尺寸
+ORIGINAL_H, ORIGINAL_W = img_original.shape[:2]
+
+# 创建窗口名称
+WINDOW_CONTROL = 'Adjustment Panel'
+WINDOW_DISPLAY = 'Original vs Processed Image (Real-time)'
+
+# 统一的空回调函数，用于滑动条
+def nothing(x):
+    pass
+# --- 2. 创建可缩放的控制面板（使用 tkinter） ---
+try:
+    import tkinter as tk
+    from tkinter import ttk
+    TK_AVAILABLE = True
+except Exception:
+    TK_AVAILABLE = False
+
+# 如果 tkinter 可用，使用它创建自适应、可缩放的控制面板；否则保留 OpenCV 窗口与滑动条（退化方案）
+value_labels = []
+scale_widgets = []
+
+if TK_AVAILABLE:
+    root = tk.Tk()
+    root.title('调整面板')
+    # 让窗口可缩放并自动调整布局
+    root.columnconfigure(0, weight=1)
+    root.rowconfigure(0, weight=1)
+
+    main_frame = ttk.Frame(root, padding=8)
+    main_frame.grid(sticky='nsew')
+    main_frame.columnconfigure(1, weight=1)
+
+    # 定义控制变量
+    contrast_var = tk.IntVar(value=10)   # /10
+    gain_var = tk.IntVar(value=10)       # /10
+    exposure_var = tk.IntVar(value=100)  # -100
+    wb_var = tk.IntVar(value=50)         # -50
+    sat_var = tk.IntVar(value=100)       # /100
+    sharp_var = tk.IntVar(value=0)       # /100
+    res_var = tk.IntVar(value=100)       # /100
+
+    controls = [
+        ('1. 对比度 (x10)', contrast_var, 5, 30),
+        ('2. 增益 (x10)', gain_var, 1, 30),
+        ('3. 曝光', exposure_var, 0, 200),
+        ('4. 白平衡 (R-B)', wb_var, 0, 100),
+        ('5. 饱和度 (%)', sat_var, 0, 200),
+        ('6. 锐度', sharp_var, 0, 100),
+        ('7. 分辨率 (%)', res_var, 10, 100),
+    ]
+
+    # 创建标签与横向滑动条，使用 grid 让其随窗口自适应
+    # 增加一列用于显示当前数值
+    main_frame.columnconfigure(2, weight=0)
+    for i, (label_text, var, lo, hi) in enumerate(controls):
+        lbl = ttk.Label(main_frame, text=label_text)
+        lbl.grid(row=i, column=0, sticky='w', padx=(0,8), pady=6)
+        scale = ttk.Scale(main_frame, orient='horizontal', from_=lo, to=hi, command=lambda v, sv=var: sv.set(int(float(v))) )
+        scale.set(var.get())
+        scale.grid(row=i, column=1, sticky='ew', pady=6)
+        # 当前值标签
+        val_lbl = ttk.Label(main_frame, text=str(var.get()))
+        val_lbl.grid(row=i, column=2, sticky='w', padx=(8,0))
+        value_labels.append(val_lbl)
+        scale_widgets.append(scale)
+
+    # 确保关闭窗口时能优雅退出循环
+    def on_close():
+        global running
+        running = False
+        try:
+            root.destroy()
+        except Exception:
+            pass
+    root.protocol('WM_DELETE_WINDOW', on_close)
+else:
+    # 退化方案：使用 OpenCV 的滑动条（窗口可能无法正确显示中文标签）
+    cv2.namedWindow(WINDOW_CONTROL, cv2.WINDOW_NORMAL)
+    cv2.resizeWindow(WINDOW_CONTROL, 400, 550) # 设置控制面板大小
+    cv2.createTrackbar('1. Contrast (x10)', WINDOW_CONTROL, 10, 30, nothing)
+    cv2.setTrackbarMin('1. Contrast (x10)', WINDOW_CONTROL, 5)
+    cv2.createTrackbar('2. Gain (x10)', WINDOW_CONTROL, 10, 30, nothing)
+    cv2.setTrackbarMin('2. Gain (x10)', WINDOW_CONTROL, 1)
+    cv2.createTrackbar('3. Exposure', WINDOW_CONTROL, 100, 200, nothing)
+    cv2.setTrackbarMin('3. Exposure', WINDOW_CONTROL, 0)
+    cv2.createTrackbar('4. White Balance (R-B)', WINDOW_CONTROL, 50, 100, nothing)
+    cv2.createTrackbar('5. Saturation (%)', WINDOW_CONTROL, 100, 200, nothing)
+    cv2.setTrackbarMin('5. Saturation (%)', WINDOW_CONTROL, 0)
+    cv2.createTrackbar('6. Sharpness', WINDOW_CONTROL, 0, 100, nothing)
+    cv2.createTrackbar('7. Resolution (%)', WINDOW_CONTROL, 100, 100, nothing)
+    cv2.setTrackbarMin('7. Resolution (%)', WINDOW_CONTROL, 10)
+
+# 控制主循环运行标志
+running = True
+
+# --- 3. 实时处理函数 ---
+
+def process_and_display():
     
-    def on_trackbar_change(self, param_name, value):
-        """滑动条变化回调"""
-        param = self.params[param_name]
-        actual_value = param['min'] + value
-        
-        success = self.camera.set(param['prop'], actual_value)
-        if success:
-            param['current'] = actual_value
-            print(f"{param_name}: {actual_value}")
-        else:
-            print(f"无法设置 {param_name}")
+    # --- A. 获取滑动条数值 ---
     
-    def run(self):
-        """运行控制面板"""
-        print("\n摄像头控制面板")
-        print("使用滑动条调整参数")
-        print("按 'q' 退出, 'r' 重置, 's' 截图, 'a' 自动聚焦")
+    # 读取控制源：优先从 tkinter（如果可用）读值，否则从 OpenCV 滑动条读取
+    if 'TK_AVAILABLE' in globals() and TK_AVAILABLE:
+        contrast_val = contrast_var.get() / 10.0
+        gain_factor = gain_var.get() / 10.0
+        exposure_val = exposure_var.get() - 100
+        wb_shift = wb_var.get() - 50
+        saturation_factor = sat_var.get() / 100.0
+        sharpness_val = sharp_var.get() / 100.0
+        resolution_percent = res_var.get() / 100.0
+        # 更新 tkinter 上的当前值显示
+        try:
+            vals = [contrast_var.get(), gain_var.get(), exposure_var.get(), wb_var.get(), sat_var.get(), sharp_var.get(), res_var.get()]
+            for lbl, v in zip(value_labels, vals):
+                lbl.config(text=str(v))
+        except Exception:
+            pass
+    else:
+        # 1. 对比度 (Contrast): 0.5 到 3.0
+        contrast_val = cv2.getTrackbarPos('1. Contrast (x10)', WINDOW_CONTROL) / 10.0
+
+        # 2. 增益 (Gain): 0.1 到 3.0（乘法因子）
+        gain_factor = cv2.getTrackbarPos('2. Gain (x10)', WINDOW_CONTROL) / 10.0
+
+        # 3. 曝光 (Exposure): -100 到 100
+        # 由于滑动条范围是 0-200，我们将其映射到 -100 到 100
+        exposure_val = cv2.getTrackbarPos('3. Exposure', WINDOW_CONTROL) - 100
+
+        # 4. 白平衡 (R-B): -50 到 50 (控制红蓝偏移)
+        # 由于滑动条范围是 0-100，我们将其映射到 -50 到 50
+        wb_shift = cv2.getTrackbarPos('4. White Balance (R-B)', WINDOW_CONTROL) - 50
+
+        # 5. 饱和度: 0.0 到 2.0
+        saturation_factor = cv2.getTrackbarPos('5. Saturation (%)', WINDOW_CONTROL) / 100.0
+
+        # 6. 锐度: 0 到 100
+        sharpness_val = cv2.getTrackbarPos('6. Sharpness', WINDOW_CONTROL) / 100.0
+
+        # 7. 分辨率 (%)
+        resolution_percent = cv2.getTrackbarPos('7. Resolution (%)', WINDOW_CONTROL) / 100.0
+
+    # --- B. 图像处理链 ---
+    
+    img_current = img_original.copy()
+    
+    # 1. 白平衡处理 (White Balance Simulation)
+    # R 增强/B 减弱 (偏红): wb_shift > 0
+    # R 减弱/B 增强 (偏蓝): wb_shift < 0
+    b, g, r = cv2.split(img_current)
+    
+    # 简单的白平衡调整：相对绿色通道进行增益调整
+    r = np.clip(r * (1 + wb_shift * 0.01), 0, 255).astype(np.uint8)
+    b = np.clip(b * (1 - wb_shift * 0.01), 0, 255).astype(np.uint8)
+    img_current = cv2.merge([b, g, r])
+
+    
+    # 2. 对比度、增益 与 曝光 调整
+    # 我们把增益作为额外乘数，最终 alpha = contrast * gain_factor
+    total_alpha = contrast_val * gain_factor
+    total_beta = exposure_val
+    img_current = cv2.convertScaleAbs(img_current, alpha=total_alpha, beta=total_beta)
+
+
+    # 3. 饱和度调整 (Saturation)
+    if saturation_factor != 1.0:
+        hsv = cv2.cvtColor(img_current, cv2.COLOR_BGR2HSV)
+        h, s, v = cv2.split(hsv)
         
-        while True:
-            ret, frame = self.camera.read()
-            if not ret:
-                break
-            
-            # 显示当前参数值
+        # 放大或缩小饱和度通道
+        s = np.clip(s * saturation_factor, 0, 255).astype(np.uint8)
+        
+        img_current = cv2.merge([h, s, v])
+        img_current = cv2.cvtColor(img_current, cv2.COLOR_HSV2BGR)
+        
+    
+    # 4. 锐度调整 (Sharpness - Unsharp Masking)
+    if sharpness_val > 0:
+        # 定义一个简单的锐化核
+        # 基础锐化核: [[0, -1, 0], [-1, 5, -1], [0, -1, 0]]
+        # 混合锐化核 (用于平滑过渡): 原始图像 * (1 + factor) - 模糊图像 * factor
+        
+        # 图像平滑 (高斯模糊)
+        img_blur = cv2.GaussianBlur(img_current, (0, 0), 3)
+        
+        # 将原始图像和模糊图像混合，系数由 sharpness_val 控制
+        img_current = cv2.addWeighted(img_current, 1 + sharpness_val * 3, 
+                                      img_blur, -(sharpness_val * 3), 0)
+        
+        # 确保值在 0-255 范围内
+        img_current = np.clip(img_current, 0, 255).astype(np.uint8)
+    
+
+    # 5. 分辨率调整 (Resolution/Resizing)
+    new_w = int(ORIGINAL_W * resolution_percent)
+    new_h = int(ORIGINAL_H * resolution_percent)
+    
+    if new_w > 0 and new_h > 0:
+        img_resized = cv2.resize(img_current, (new_w, new_h), 
+                                 interpolation=cv2.INTER_LINEAR)
+    else:
+        img_resized = np.zeros((10, 10, 3), dtype=np.uint8) # 防止 0x0 尺寸
+
+    # --- C. 显示结果 ---
+
+    # 创建一个用于并排显示的画布
+    # 统一将原图和处理后的图都调整到 640xH 的宽度，以便对比
+    display_w = 400
+    display_h = int(ORIGINAL_H * (display_w / ORIGINAL_W))
+
+    # 调整原图和处理后的图片尺寸，保持长宽比
+    img_orig_display = cv2.resize(img_original, (display_w, display_h))
+    img_proc_display = cv2.resize(img_resized, (display_w, display_h))
+    
+    # 并排合并
+    combined_image = np.hstack((img_orig_display, img_proc_display))
+    
+    # 添加文字提示
+    cv2.putText(combined_image, 'ORIGINAL', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+    cv2.putText(combined_image, 'PROCESSED', (display_w + 10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+
+    cv2.imshow(WINDOW_DISPLAY, combined_image)
+    # 如果使用 OpenCV 回退方案，在控制窗口上绘制当前数值，保证用户能看到数值信息
+    if not ('TK_AVAILABLE' in globals() and TK_AVAILABLE):
+        try:
+            ctrl_w, ctrl_h = 400, 550
+            ctrl_img = np.full((ctrl_h, ctrl_w, 3), 220, dtype=np.uint8)
+            labels_vals = [
+                ('1. Contrast(x10)', int(cv2.getTrackbarPos('1. Contrast (x10)', WINDOW_CONTROL))),
+                ('2. Gain(x10)', int(cv2.getTrackbarPos('2. Gain (x10)', WINDOW_CONTROL))),
+                ('3. Exposure', int(cv2.getTrackbarPos('3. Exposure', WINDOW_CONTROL) - 100)),
+                ('4. WhiteBalance', int(cv2.getTrackbarPos('4. White Balance (R-B)', WINDOW_CONTROL) - 50)),
+                ('5. Saturation(%)', int(cv2.getTrackbarPos('5. Saturation (%)', WINDOW_CONTROL))),
+                ('6. Sharpness', int(cv2.getTrackbarPos('6. Sharpness', WINDOW_CONTROL))),
+                ('7. Resolution(%)', int(cv2.getTrackbarPos('7. Resolution (%)', WINDOW_CONTROL))),
+            ]
             y = 30
-            for name, param in self.params.items():
-                text = f"{name}: {param['current']}"
-                cv2.putText(frame, text, (10, y),
-                           cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
-                y += 30
-            
-            cv2.imshow(self.window_name, frame)
-            
-            key = cv2.waitKey(1) & 0xFF
-            if key == ord('q'):
+            for text, val in labels_vals:
+                cv2.putText(ctrl_img, f"{text}: {val}", (10, y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 1)
+                y += 40
+            cv2.imshow(WINDOW_CONTROL, ctrl_img)
+        except Exception:
+            pass
+
+# --- 4. 主循环 ---
+if 'TK_AVAILABLE' in globals() and TK_AVAILABLE:
+    # 使用 tkinter 主循环集成
+    try:
+        while running:
+            process_and_display()
+            # 仍需调用 cv2.waitKey 以处理 OpenCV 窗口事件
+            if cv2.waitKey(10) & 0xFF == ord('q'):
+                running = False
+                try:
+                    root.destroy()
+                except Exception:
+                    pass
                 break
-            elif key == ord('r'):
-                self.reset_parameters()
-            elif key == ord('s'):
-                cv2.imwrite('screenshot.jpg', frame)
-                print("截图已保存")
-            elif key == ord('a'):
-                self.camera.set(cv2.CAP_PROP_AUTOFOCUS, 1)
-                print("自动聚焦已启用")
-        
-        self.camera.release()
-        cv2.destroyAllWindows()
-    
-    def reset_parameters(self):
-        """重置所有参数到默认值"""
-        defaults = {
-            'brightness': 128,
-            'contrast': 128,
-            'saturation': 128,
-            'exposure': -5,
-            'focus': 128,
-        }
-        
-        for name, value in defaults.items():
-            if name in self.params:
-                self.camera.set(self.params[name]['prop'], value)
-                cv2.setTrackbarPos(name, self.window_name, value)
-        
-        print("参数已重置")
+            # 更新 tkinter 事件（让窗口响应调整大小）
+            try:
+                root.update()
+            except Exception:
+                # 如果窗口被关闭，退出循环
+                break
+    finally:
+        try:
+            root.destroy()
+        except Exception:
+            pass
+else:
+    while True:
+        process_and_display()
+        # 按 'q' 键退出
+        if cv2.waitKey(10) & 0xFF == ord('q'):
+            break
 
-# 使用
-panel = CameraControlPanel(0)
-panel.run()
-
+cv2.destroyAllWindows()
 ```
