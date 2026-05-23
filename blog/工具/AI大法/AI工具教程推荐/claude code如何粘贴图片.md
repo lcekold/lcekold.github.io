@@ -1,0 +1,1 @@
+claude code 可以通过alt+v粘贴图片,原理是上传到一个临时的oss上,然后把url交给AI
