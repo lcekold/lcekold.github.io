@@ -134,7 +134,7 @@ PDO分为两种：
 
 PDO报文数据域中每个字节都用作数据传输，因此报文利用率高。
 
-<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/SDO数据.jpg" alt="SDO数据">
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/SDO数据.png" alt="SDO数据">
 
 ### 2.6.2 SDO服务数据对象
 
