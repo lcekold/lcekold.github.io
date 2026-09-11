@@ -2,7 +2,7 @@
 
 # 一、首先先看WireShark的主界面（报文列表区）
 
-![WireShark主界面](../../../img/ethercat/wiresharp1.jpg)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/wiresharp1.jpg" alt="WireShark主界面">
 
 * 看时间戳 (Time)：观察报文发送的时间间隔。如果是周期性的报文，间隔是否稳定（比如每 1ms 一次）？如果有突变，说明主站可能发生了丢包或调度延迟。
 * 看源和目的 (Source/Destination)：判断通信双方是谁（主站 MAC 还是从站 MAC，广播还是单播）。
@@ -11,7 +11,7 @@
 
 # 二、学会使用显示过滤器
 
-![WireShark显示过滤器](../../../img/ethercat/wiresharp2.jpg)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/wiresharp2.jpg" alt="WireShark显示过滤器">
 
 动辄几十万个包，不可能全看。使用显示过滤器（顶部的输入框，背景通常是浅绿色）可以筛选所关心的报文。
 
@@ -24,7 +24,7 @@
 
 # 三、选中某条报文，看报文详情区
 
-![WireShark报文详情区](../../../img/ethercat/wiresharp3.jpg)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/wiresharp3.jpg" alt="WireShark报文详情区">
 
 这里遵循 TCP/IP 或工业协议的分层模型，从上往下依次是：
 

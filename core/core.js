@@ -4,6 +4,13 @@
 var gh = {
     username: "${username}", //pages用户名
     baseBlogUrl: "https://api.github.com/repos/${username}/${username}.github.io/contents/", //博客内容地址
+    /* 正文里相对路径图片的最终前缀。正文由上面的API实时读取，图片却是静态文件，
+       只能靠GitHub Pages提供；一旦Pages部署落后（本仓库就卡在2024年那次构建），图片就全404。
+       走jsDelivr直接读GitHub仓库文件，既不用等Pages部署，file:// 打开也能显示。
+       【注意】这里绝对不能出现 "@"：editor.md 的 atLink 会把 "@xxx" 当提及替换成 <a> 标签，
+       连 <img src="...@master/..."> 里的地址一起改坏（旧写法就是这么坏的）。
+       想改回站内相对地址，把这里换成 "/" 即可。 */
+    imageBaseUrl: "https://cdn.jsdelivr.net/gh/${username}/${username}.github.io/",
     readmeTid: "blog/ABOUT/About Me.md", //个人主页标识
     treeUrl: "https://api.github.com/repos/${username}/${username}.github.io/git/trees/master?recursive=1", //所有文件地址
     cache: {}, //文件缓存
@@ -263,6 +270,44 @@ var Api = (function() {
         }
         return false;
     };
+    /**
+     * 把 "blog/信捷/Ethercat/../../../img/x.png" 这类路径解析成仓库内的真实路径 "img/x.png"
+     * @param basePath 当前markdown文件所在目录，形如 /blog/信捷/Ethercat/
+     * @param relativePath markdown里写的图片路径，如 ../../../img/ethercat/x.png
+     */
+    M.resolveRepoPath = function(basePath, relativePath) {
+        var parts = (basePath + "/" + relativePath).replace(/\\/g, "/").split("/");
+        var stack = [];
+        for (var i = 0; i < parts.length; i++) {
+            var part = parts[i];
+            if (part === "" || part === ".") {
+                continue;
+            }
+            if (part === "..") {
+                stack.pop();
+                continue;
+            }
+            stack.push(part);
+        }
+        return stack.join("/");
+    };
+
+    /**
+     * 把正文里的相对图片路径补成绝对地址（网络地址和站内绝对路径原样保留）
+     */
+    M.replaceImagePath = function(md, blogPath) {
+        var patten = /\(([^)]+?\.(?:png|jpe?g|gif|webp|svg|bmp|avif|ico))(\s+"[^"]*")?\)/gi;
+        return md.replace(patten, function(match, picPath, title) {
+            /* 原实现在这里 return false，会把 ![](/img/x.png) 这种站内绝对路径
+               整段替换成字符串 "false"，正文里就多出一行 "false" 文字。 */
+            if (/^([a-z][a-z0-9+.\-]*:)?\/\//i.test(picPath) || picPath.charAt(0) === "/") {
+                return match;
+            }
+            var repoPath = M.resolveRepoPath(blogPath, picPath);
+            return "(" + gh.imageBaseUrl + encodeURI(repoPath).replace(/#/g, "%23") + (title || "") + ")";
+        });
+    };
+
     M.renderBlogTxt = function(node, sync) {
         // 隐藏Button，响应式布局用。
         if (!$("#btnNav").is(":hidden")) {
@@ -287,6 +332,12 @@ var Api = (function() {
                 tocContainer: "#md_toc_container", // 自定义 ToC 容器层
                 emoji: true,
                 taskList: true,
+                /* 关掉 @提及 自动转链接：它会扫描已经渲染好的段落HTML，
+                   把地址里的 "@main"/"@master" 也当成提及，替换成 <a href="...">，
+                   结果 <img src="https://cdn.jsdelivr.net/gh/user/repo@main/x.png">
+                   被改成 src="https://cdn.jsdelivr.net/gh/user/repo<a href=" 而全部裂图。
+                   笔记里也常有 @Override / @Autowired / @media 这类文本会被误伤。 */
+                atLink: false,
                 tex: true, // 默认不解析
                 flowChart: true, // 默认不解析
                 sequenceDiagram: true // 默认不解析
@@ -328,15 +379,7 @@ var Api = (function() {
                 },
                 success: function(result) {
                     //替换markdown里的图片的路径
-                    var patten = /\(([^\)])*?\.(jpg|gif|png)\)/gi;
-                    var md = result.replace(patten, function(match) {
-                        var picPath = match.substring(1, match.lastIndexOf(")"));
-                        if (picPath.startsWith("http") || picPath.startsWith("/")) {
-                            return false;
-                        }
-                        var r = "(" + blogPath + picPath + ")";
-                        return r;
-                    });
+                    var md = M.replaceImagePath(result, blogPath);
                     renderMd(md);
                     gh.cache[blogUrl] = md;
                 }
@@ -525,8 +568,10 @@ $(document).ready(function() {
             var username = result.username;
             for (var key in gh) {
                 var value = gh[key];
-                if (value) {
-                    gh[key] = value.toString().replace(/\${.*?}/g, username);
+                /* 只处理占位符字符串。原来的 value.toString() 会把 gh.cache 这个对象
+                   变成字符串 "[object Object]"，导致正文缓存彻底失效（每点一篇都重新请求API）。 */
+                if (typeof value === "string" && value.indexOf("${") >= 0) {
+                    gh[key] = value.replace(/\${.*?}/g, username);
                 }
             }
             gh.readmeTid = result.homePage;

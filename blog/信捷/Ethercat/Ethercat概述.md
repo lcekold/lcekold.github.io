@@ -17,9 +17,9 @@ EtherCAT帧或电报由以太网标头组成，后跟EtherCAT数据，并以帧�
 * EtherCAT标头指定后续EtherCAT数据报文的总长度和类型。EtherCAT头之后是
 * EtherCAT数据报文，它包含将在网络中读取或写入的实际数据。这些数据包括地址规范、主机想要执行的命令类型（即读取、写入或读写）以及循环过程数据（PDO）。
 
-![ethercat数据](../../../img/ethercat/ethercat1.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat1.png" alt="ethercat数据">
 
-![wiresharp4](../../../img/ethercat/wiresharp4.jpg)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/wiresharp4.jpg" alt="wiresharp4">
 
 单个EtherCAT帧最多可包含1498个字节。如果需要超过1498个字节，则主设备将发送多个数据帧，并且每个帧将包含标识符，该标识符用信号通知网络上的设备是否应该期望在当前帧之后的另一帧。
 
@@ -79,7 +79,7 @@ $ sudo ethtool -s eth0 speed 100 duplex full autoneg off
 
 每个从站自己带一个高精度时钟，主站统一对这些时钟做同步（补偿并锁定）。这样所有从站的 I/O 采集与输出能做到**纳秒级同步**，对多轴运动控制尤其重要。
 
-![ethercat分布式时钟](../../../img/ethercat/ethercat分布式时钟.jpg)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat分布式时钟.jpg" alt="ethercat分布式时钟">
 
 在EtherCAT链中，有一个选定的EtherCAT从站，代表参考时钟（M），其他设备和控制器的从机时钟（S）与之同步。因此，参考时钟即是系统时间。如果EtherCAT主机支持分布式时钟功能，例如Beckhoff TwinCAT EtherCAT主站，则其可自动连续处理调整和同步。为此，EtherCAT主机以短时间间隔发送一个特殊EtherCAT数据报文（具有足够的频率以确保从站时钟在指定的限制内保持同步），其中EtherCAT从站与参考时钟进入其当前时间。然后，所有其他具有从时钟的EtherCAT从站从同一数据报中读取该信息。
 
@@ -93,7 +93,7 @@ EtherCAT从站控制器（ESC）处理EtherCAT通信，尤其是EtherCAT从站�
 
 每个EtherCAT从设备都有这样一个ESC，以确保通过EtherCAT现场总线在主设备和从设备之间交换循环和非循环过程数据。该ESC可以直接处理数字输入和输出等简单功能，也可以通过串行/并行接口连接到EtherCAT从机中的另一个处理器，以处理更复杂的任务，如驱动控制。特别是，如果EtherCAT从站需要支持此功能，ESC会管理本地分布式时钟功能和相关任务。
 
-![ethercat从站控制器](../../../img/ethercat/ethercat从站控制器.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat从站控制器.png" alt="ethercat从站控制器">
 
 信号通过转变器从RJ45插座传输到PHY（物理接口）。它从编码的以太网信号中提取用户数据，并将其传输到ESC进行处理。然后，EtherCAT电报以最小延迟（由于动态处理）通过PHY和套接字中继到下一个EtherCAT从机。当从设备启动时，ESC自动通过EEPROM中的配置数据对自身进行参数化。如果从设备中存在另一个CPU，则从站可以通过接口与其通信。
 
@@ -111,16 +111,35 @@ ESC的分布式时钟单元在完整配置中提供以下功能（取决于设�
 
 EtherCAT总线通信过程如下：
 
-![ethercatPOD和SDO](../../../img/ethercat/PDO和SDO.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/PDO和SDO.png" alt="ethercatPOD和SDO">
 
 ### 2.6.1 PDO过程数据对象
 PDO（Process Data Object，过程数据对象）是EtherCAT中用于实时数据交换的主要机制。它允许主站和从站之间以固定的时间间隔进行数据传输，适用于需要快速响应的控制任务。
 
+主站和从站通过PDO进行数据交换时，一方发送数据后，另一方不需要应答。
 
+控制器通过指令控制EtherCAT从站时，控制器和从站之间通过PDO方式进行数据交换。
+
+PDO列表可以看作一个数组空间，每个数组元素存放了不同的功能码，PDO在一个周期中执行这些功能码对应的操作，这些功能码就叫做数据字典。
+
+PDO分为两种：
+* 从站传送数据给主站用的TxPDO
+* 主站传送数据给从站用的RxPDO
+
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/pdo数据.jpg" alt="pdo数据">
+
+其中EtherCAT总线上控制器为主站，伺服驱动器或其他总线模块为从站。
+
+一个节点的TxPDO是将数据由此节点传输到其他节点，而RxPDO则是接收由其他节点传输的数据。
+
+PDO报文数据域中每个字节都用作数据传输，因此报文利用率高。
+
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/SDO数据.jpg" alt="SDO数据">
 
 ### 2.6.2 SDO服务数据对象
 
 SDO（Service Data Object，服务数据对象）用于配置和访问从站的参数。它提供了一种请求-响应机制，使主站能够读取或写入从站的对象字典中的数据。这种方式适用于非实时的数据交换，如设备配置、状态查询等。
+
 
 
 ## 2.6 EtherCAT如何寻址？——不用IP，靠什么知道“数据是自己的”
