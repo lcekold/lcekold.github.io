@@ -41,6 +41,8 @@ EtherCAT 充分利用以太网的**全双工**特性，使用**主从模式**的
 
 **MII 说白了就是 MAC 和 PHY 之间那一组标准化的线**——引脚几根、什么电平、什么时序，全都规定好。
 
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/MII_MAC与PHY接口.png" alt="MII 是 MAC 与 PHY 之间的标准化接口">
+
 **为什么非要"标准化"？** 因为两块芯片本来就是分开的，**但"分开"不等于"解耦"**：不规定好，每家厂商的 PHY 线数、时钟方向、时序都不一样，MAC 就只能绑死某一家。**有了 MII，任意两家的芯片插上就能通，换 PHY 时 MAC 和上层软件一行都不用改**——这就是"介质无关"。
 
 （MII 只管数据。PHY 跑 100M 还是 10M、全双工还是半双工，由另一条总线 **MDC/MDIO** 管。）
