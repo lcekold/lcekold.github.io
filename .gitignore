@@ -29,3 +29,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# 原书 PDF：受版权保护的出版物，仅本地参考，不纳入版本库
+工业以太网现场总线EtherCAT驱动程序设计及应用.pdf
+
+# 笔记整理过程中的临时产物
+_pdfimg/
+_pdfimg_*.py
