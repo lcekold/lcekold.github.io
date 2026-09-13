@@ -6,7 +6,7 @@
 
 **图 5.1　IEC 61800-7 体系结构**（原书 p.112）
 
-![图 5.1 IEC 61800-7 体系结构](../../../../img/ethercat/ethercat-book/F067_p112.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F067_p112.png" alt="图 5.1 IEC 61800-7 体系结构">
 
 IEC 61800 系列是**可调速电子功率驱动系统**的通用规范。其中 **IEC 61800-7 定义了控制系统和功率驱动系统之间的通信接口标准**，内容包含**网络通信技术**和**应用行规**两半。行规按风格分 4 类，各自映射到不同网络：
 
@@ -25,7 +25,7 @@ CANopen 最初是为 CAN 总线系统制定的应用层协议，EtherCAT 在应�
 
 **图 5.2　PDO 分配示意图**（原书 p.114）
 
-![图 5.2 PDO 分配示意图](../../../../img/ethercat/ethercat-book/F068_p114.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F068_p114.png" alt="图 5.2 PDO 分配示意图">
 
 CoE 完全遵从 CANopen，对象字典的定义也相同，按索引号分五大区间：
 
@@ -74,39 +74,39 @@ CoE 完全遵从 CANopen，对象字典的定义也相同，按索引号分五�
 
 **图 5.3　CoE 数据头**（原书 p.115）
 
-![图 5.3 CoE 数据头](../../../../img/ethercat/ethercat-book/F069_p115.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F069_p115.png" alt="图 5.3 CoE 数据头">
 
 **图 5.4　SDO 数据帧格式**（原书 p.116）
 
-![图 5.4 SDO 数据帧格式](../../../../img/ethercat/ethercat-book/F070_p116.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F070_p116.png" alt="图 5.4 SDO 数据帧格式">
 
 **图 5.5　SDO 传输类型（快速／常规／分段）**（原书 p.117）
 
-![图 5.5 SDO 传输类型（快速／常规／分段）](../../../../img/ethercat/ethercat-book/F071_p117.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F071_p117.png" alt="图 5.5 SDO 传输类型（快速／常规／分段）">
 
 **图 5.6　SDO 下载服务数据帧格式**（原书 p.117）
 
-![图 5.6 SDO 下载服务数据帧格式](../../../../img/ethercat/ethercat-book/F072_p117.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F072_p117.png" alt="图 5.6 SDO 下载服务数据帧格式">
 
 **图 5.7　SDO 下载响应数据格式**（原书 p.119）
 
-![图 5.7 SDO 下载响应数据格式](../../../../img/ethercat/ethercat-book/F073_p119.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F073_p119.png" alt="图 5.7 SDO 下载响应数据格式">
 
 **图 5.8　SDO 快速下载传输实例**（原书 p.122）
 
-![图 5.8 SDO 快速下载传输实例](../../../../img/ethercat/ethercat-book/F074_p122.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F074_p122.png" alt="图 5.8 SDO 快速下载传输实例">
 
 **图 5.9　常规 SDO 下载传输实例**（原书 p.123）
 
-![图 5.9 常规 SDO 下载传输实例](../../../../img/ethercat/ethercat-book/F075_p123.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F075_p123.png" alt="图 5.9 常规 SDO 下载传输实例">
 
 **图 5.10　SDO 分段下载传输实例**（原书 p.123）
 
-![图 5.10 SDO 分段下载传输实例](../../../../img/ethercat/ethercat-book/F076_p123.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F076_p123.png" alt="图 5.10 SDO 分段下载传输实例">
 
 **图 5.11　紧急事件数据帧格式**（原书 p.124）
 
-![图 5.11 紧急事件数据帧格式](../../../../img/ethercat/ethercat-book/F077_p124.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F077_p124.png" alt="图 5.11 紧急事件数据帧格式">
 
 主站通过读写邮箱数据 **SM 通道**实现非周期通信（邮箱机制见 2.5.2）。邮箱数据头之后是 **2 字节 CoE 头**：位 0~8 = PDO 编号，位 9~11 保留，位 12~15 = **服务类型**：
 
@@ -159,19 +159,19 @@ CoE 完全遵从 CANopen，对象字典的定义也相同，按索引号分五�
 
 **图 5.12　数据对象 0x6062 定义**（原书 p.127）
 
-![图 5.12 数据对象 0x6062 定义](../../../../img/ethercat/ethercat-book/F078_p127.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F078_p127.png" alt="图 5.12 数据对象 0x6062 定义">
 
 **图 5.13　周期性同步位置控制（csp）运行模式结构图**（原书 p.130）
 
-![图 5.13 周期性同步位置控制（csp）运行模式结构图](../../../../img/ethercat/ethercat-book/F079_p130.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F079_p130.png" alt="图 5.13 周期性同步位置控制（csp）运行模式结构图">
 
 **图 5.14　周期性同步速度控制（csv）运行模式结构图**（原书 p.130）
 
-![图 5.14 周期性同步速度控制（csv）运行模式结构图](../../../../img/ethercat/ethercat-book/F080_p130.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F080_p130.png" alt="图 5.14 周期性同步速度控制（csv）运行模式结构图">
 
 **图 5.15　周期性同步转矩控制（cst）运行模式结构图**（原书 p.131）
 
-![图 5.15 周期性同步转矩控制（cst）运行模式结构图](../../../../img/ethercat/ethercat-book/F081_p131.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F081_p131.png" alt="图 5.15 周期性同步转矩控制（cst）运行模式结构图">
 
 CoE 完全遵从 CANopen 应用层行规。CANopen 标准行规主要有 CiA401 I/O 模块、**CiA402 伺服和运动控制**、CiA403 人机接口、CiA404 测量设备和闭环控制、CiA406 编码器、CiA408 比例液压阀等。本节只讲 CiA402。
 
@@ -256,7 +256,7 @@ CoE 完全遵从 CANopen 应用层行规。CANopen 标准行规主要有 CiA401 
 
 **图 5.16　EtherCAT 状态机与 SERCOS 状态机比较**（原书 p.131）
 
-![图 5.16 EtherCAT 状态机与 SERCOS 状态机比较](../../../../img/ethercat/ethercat-book/F082_p131.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F082_p131.png" alt="图 5.16 EtherCAT 状态机与 SERCOS 状态机比较">
 
 | SERCOS 通信阶段 | EtherCAT 状态 | 说明 |
 | --- | --- | --- |
@@ -291,11 +291,11 @@ SoE 继承 SERCOS 的 **IDN** 参数定义：每个 IDN 有唯一的 **16 位标
 
 **图 5.17　从站控制数据映射**（原书 p.133）
 
-![图 5.17 从站控制数据映射](../../../../img/ethercat/ethercat-book/F083_p133.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F083_p133.png" alt="图 5.17 从站控制数据映射">
 
 **图 5.18　从站反馈数据映射**（原书 p.135）
 
-![图 5.18 从站反馈数据映射](../../../../img/ethercat/ethercat-book/F084_p135.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F084_p135.png" alt="图 5.18 从站反馈数据映射">
 
 输出过程数据（**MDT** 内容）和输入过程数据（**AT** 内容）由 **S-0-0015、S-0-0016 和 S-0-0024** 配置，过程数据不包括服务通道数据，只有周期性过程数据：输出过程数据包括**伺服控制字和指令数据**，输入过程数据包括**状态字和反馈数据**。主站在"预运行"阶段通过邮箱通信写这三个参数来配置周期性过程数据的内容。**S-0-0015 设定周期性过程数据的类型**：
 
@@ -339,39 +339,39 @@ SoE 继承 SERCOS 的 **IDN** 参数定义：每个 IDN 有唯一的 **16 位标
 
 **图 5.19　SoE 数据格式**（原书 p.136）
 
-![图 5.19 SoE 数据格式](../../../../img/ethercat/ethercat-book/F085_p136.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F085_p136.png" alt="图 5.19 SoE 数据格式">
 
 **图 5.20　正确的 SSC 读操作序列**（原书 p.138）
 
-![图 5.20 正确的 SSC 读操作序列](../../../../img/ethercat/ethercat-book/F086_p138.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F086_p138.png" alt="图 5.20 正确的 SSC 读操作序列">
 
 **图 5.21　正确的 SSC 分段读操作序列**（原书 p.139）
 
-![图 5.21 正确的 SSC 分段读操作序列](../../../../img/ethercat/ethercat-book/F087_p139.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F087_p139.png" alt="图 5.21 正确的 SSC 分段读操作序列">
 
 **图 5.22　SSC 写操作时序**（原书 p.140）
 
-![图 5.22 SSC 写操作时序](../../../../img/ethercat/ethercat-book/F088_p140.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F088_p140.png" alt="图 5.22 SSC 写操作时序">
 
 **图 5.23　SSC 分段写操作时序**（原书 p.140）
 
-![图 5.23 SSC 分段写操作时序](../../../../img/ethercat/ethercat-book/F089_p140.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F089_p140.png" alt="图 5.23 SSC 分段写操作时序">
 
 **图 5.24　过程命令控制字**（原书 p.141）
 
-![图 5.24 过程命令控制字](../../../../img/ethercat/ethercat-book/F090_p141.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F090_p141.png" alt="图 5.24 过程命令控制字">
 
 **图 5.25　过程命令状态字**（原书 p.141）
 
-![图 5.25 过程命令状态字](../../../../img/ethercat/ethercat-book/F091_p141.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F091_p141.png" alt="图 5.25 过程命令状态字">
 
 **图 5.26　过程命令执行流程**（原书 p.142）
 
-![图 5.26 过程命令执行流程](../../../../img/ethercat/ethercat-book/F092_p142.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F092_p142.png" alt="图 5.26 过程命令执行流程">
 
 **图 5.27　SSC 从站信息服务执行时序**（原书 p.142）
 
-![图 5.27 SSC 从站信息服务执行时序](../../../../img/ethercat/ethercat-book/F093_p142.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F093_p142.png" alt="图 5.27 SSC 从站信息服务执行时序">
 
 **SSC**（SoE Service Channel，SoE 服务通道）由 **EtherCAT 邮箱通信**实现，用于**非周期性数据交换**，如读写 IDN 及其元素。邮箱类型 = 5 表示 SoE；邮箱数据头之后是 **4 字节 SoE 数据头**（命令字 1 字节 + 16 位 IDN + 1 字节元素标识）：
 
@@ -398,7 +398,7 @@ SoE 继承 SERCOS 的 **IDN** 参数定义：每个 IDN 有唯一的 **16 位标
 
 **图 5.28　SoE 过程数据与 SERCOS 对应关系**（原书 p.143）
 
-![图 5.28 SoE 过程数据与 SERCOS 对应关系](../../../../img/ethercat/ethercat-book/F094_p143.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F094_p143.png" alt="图 5.28 SoE 过程数据与 SERCOS 对应关系">
 
 | 主题 | 一句话核心 |
 | --- | --- |

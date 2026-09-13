@@ -10,7 +10,7 @@
 
 **图 6.1　EtherCAT 控制系统协议栈**（原书 p.144）
 
-![图 6.1 EtherCAT 控制系统协议栈](../../../../img/ethercat/ethercat-book/F095_p144.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F095_p144.png" alt="图 6.1 EtherCAT 控制系统协议栈">
 
 EtherCAT 主站可以由 PC 或其他嵌入式计算机实现。用 PC 时：
 
@@ -137,11 +137,11 @@ BroadcastEthernetAddress
 
 **图 6.2　NDIS 结构示意图**（原书 p.153）
 
-![图 6.2 NDIS 结构示意图](../../../../img/ethercat/ethercat-book/F096_p153.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F096_p153.png" alt="图 6.2 NDIS 结构示意图">
 
 **图 6.3　WinPcap 组成**（原书 p.153）
 
-![图 6.3 WinPcap 组成](../../../../img/ethercat/ethercat-book/F097_p153.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F097_p153.png" alt="图 6.3 WinPcap 组成">
 
 作者用 **WinPcap** 的 **NPF（Netgroup Packet Filter）** 驱动来收发原始以太网帧。
 
@@ -279,7 +279,7 @@ while (!m_bStopReceiver) {
 
 **图 6.4　接收数据帧流程调用图**（原书 p.160）
 
-![图 6.4 接收数据帧流程调用图](../../../../img/ethercat/ethercat-book/F098_p160.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F098_p160.png" alt="图 6.4 接收数据帧流程调用图">
 
 `CheckRecvFrame(pData)` —— **应用程序调用它从 `m_listPacket` 取出一个数据帧**：
 
@@ -874,11 +874,11 @@ if (pHead->idx < 0x80) {
 
 **图 6.5　主站实例程序硬件配置**（原书 p.194）
 
-![图 6.5 主站实例程序硬件配置](../../../../img/ethercat/ethercat-book/F099_p194.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F099_p194.png" alt="图 6.5 主站实例程序硬件配置">
 
 **图 6.6　主站实例程序初始化运行流程**（原书 p.194）
 
-![图 6.6 主站实例程序初始化运行流程](../../../../img/ethercat/ethercat-book/F100_p194.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F100_p194.png" alt="图 6.6 主站实例程序初始化运行流程">
 
 **实例程序用多窗口界面，一个子窗口表示一个从站。**
 
@@ -968,15 +968,15 @@ void CMainFrame::OnFileNewproject() {
 
 **图 6.7　主站实例程序周期性运行流程**（原书 p.195）
 
-![图 6.7 主站实例程序周期性运行流程](../../../../img/ethercat/ethercat-book/F101_p195.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F101_p195.png" alt="图 6.7 主站实例程序周期性运行流程">
 
 **图 6.8　主站实例程序的运行界面**（原书 p.195）
 
-![图 6.8 主站实例程序的运行界面](../../../../img/ethercat/ethercat-book/F102_p195.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F102_p195.png" alt="图 6.8 主站实例程序的运行界面">
 
 **图 6.9　主站实例程序配置界面**（原书 p.196）
 
-![图 6.9 主站实例程序配置界面](../../../../img/ethercat/ethercat-book/F103_p196.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F103_p196.png" alt="图 6.9 主站实例程序配置界面">
 
 **实例程序使用多媒体定时器完成周期性数据通信和轮询非周期性任务**（状态机处理、界面刷新等）。
 

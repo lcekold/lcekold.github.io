@@ -32,7 +32,7 @@
 
 **图 3.1　ESC 结构图**（原书 p.42）
 
-![图 3.1 ESC 结构图](../../../../img/ethercat/ethercat-book/F031_p042.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F031_p042.png" alt="图 3.1 ESC 结构图">
 
 ### 3.1.1 ESC 芯片种类
 
@@ -72,7 +72,7 @@ ESC 由德国 **BECKHOFF** 提供，包括 **ASIC 芯片**和 **IP-Core** 两种
 
 **图 3.2　ESC 内部存储空间示意图**（原书 p.44）
 
-![图 3.2 ESC 内部存储空间示意图](../../../../img/ethercat/ethercat-book/F032_p044.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F032_p044.png" alt="图 3.2 ESC 内部存储空间示意图">
 
 ESC 有 **64KB 的 DPRAM 地址空间**：
 
@@ -157,13 +157,13 @@ ESC 有 **64KB 的 DPRAM 地址空间**：
 
 **图 3.3　ET1100 结构框图**（原书 p.51）
 
-![图 3.3 ET1100 结构框图](../../../../img/ethercat/ethercat-book/F033_p051.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F033_p051.png" alt="图 3.3 ET1100 结构框图">
 
 ### 3.2.1 ET1100 引脚定义
 
 **图 3.4　ET1100 芯片 BGA128 封装的引脚分布**（原书 p.52）
 
-![图 3.4 ET1100 芯片 BGA128 封装的引脚分布](../../../../img/ethercat/ethercat-book/F034_p052.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F034_p052.png" alt="图 3.4 ET1100 芯片 BGA128 封装的引脚分布">
 
 引脚大致分四组（详见厂商数据手册，这里只抓分类）：
 
@@ -178,11 +178,11 @@ ESC 有 **64KB 的 DPRAM 地址空间**：
 
 **图 3.7　端口 0 的 MII 接口示意图**（原书 p.58）
 
-![图 3.7 端口 0 的 MII 接口示意图](../../../../img/ethercat/ethercat-book/F037_p058.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F037_p058.png" alt="图 3.7 端口 0 的 MII 接口示意图">
 
 **图 3.8　EBUS 接口信号**（原书 p.59）
 
-![图 3.8 EBUS 接口信号](../../../../img/ethercat/ethercat-book/F038_p059.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F038_p059.png" alt="图 3.8 EBUS 接口信号">
 
 ET1100 支持两种物理层接口模式：**MII** 和 **EBUS**（见第2章 2.1.2 的对比表：MII ≈500ns/端口、EBUS ≈100ns/端口、EBUS 最大 10m）。
 
@@ -199,27 +199,27 @@ ET1100 支持两种物理层接口模式：**MII** 和 **EBUS**（见第2章 2.1
 
 **图 3.9　数字量输入／输出信号**（原书 p.60）
 
-![图 3.9 数字量输入／输出信号](../../../../img/ethercat/ethercat-book/F039_p060.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F039_p060.png" alt="图 3.9 数字量输入／输出信号">
 
 **图 3.10　数字 I/O 双向模式原理**（原书 p.62）
 
-![图 3.10 数字 I/O 双向模式原理](../../../../img/ethercat/ethercat-book/F040_p062.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F040_p062.png" alt="图 3.10 数字 I/O 双向模式原理">
 
 **图 3.11　SPI 主机和从机连接图**（原书 p.63）
 
-![图 3.11 SPI 主机和从机连接图](../../../../img/ethercat/ethercat-book/F041_p063.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F041_p063.png" alt="图 3.11 SPI 主机和从机连接图">
 
 **图 3.12　8 位异步微处理器与 ET1100 的数据接口**（原书 p.64）
 
-![图 3.12 8 位异步微处理器与 ET1100 的数据接口](../../../../img/ethercat/ethercat-book/F042_p064.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F042_p064.png" alt="图 3.12 8 位异步微处理器与 ET1100 的数据接口">
 
 **图 3.13　16 位异步微处理器与 ET1100 的数据接口**（原书 p.65）
 
-![图 3.13 16 位异步微处理器与 ET1100 的数据接口](../../../../img/ethercat/ethercat-book/F043_p065.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F043_p065.png" alt="图 3.13 16 位异步微处理器与 ET1100 的数据接口">
 
 **图 3.14　16 位同步微处理器使用字节选择信号操作 ET1100**（原书 p.65）
 
-![图 3.14 16 位同步微处理器使用字节选择信号操作 ET1100](../../../../img/ethercat/ethercat-book/F044_p065.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F044_p065.png" alt="图 3.14 16 位同步微处理器使用字节选择信号操作 ET1100">
 
 PDI（Physical Device Interface）是**ESC 与从站本地微处理器之间的接口**，ET1100 提供几种形态：
 
@@ -233,19 +233,19 @@ PDI（Physical Device Interface）是**ESC 与从站本地微处理器之间的�
 
 **图 3.5　ET1100 使用石英晶体作为时钟源时的连接**（原书 p.57）
 
-![图 3.5 ET1100 使用石英晶体作为时钟源时的连接](../../../../img/ethercat/ethercat-book/F035_p057.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F035_p057.png" alt="图 3.5 ET1100 使用石英晶体作为时钟源时的连接">
 
 **图 3.6　ET1100 使用外部振荡器作为时钟源输入时的连接**（原书 p.57）
 
-![图 3.6 ET1100 使用外部振荡器作为时钟源输入时的连接](../../../../img/ethercat/ethercat-book/F036_p057.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F036_p057.png" alt="图 3.6 ET1100 使用外部振荡器作为时钟源输入时的连接">
 
 **图 3.15　ET1100 复位引脚连接图**（原书 p.68）
 
-![图 3.15 ET1100 复位引脚连接图](../../../../img/ethercat/ethercat-book/F045_p068.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F045_p068.png" alt="图 3.15 ET1100 复位引脚连接图">
 
 **图 3.16　ET1100 供电连接**（原书 p.69）
 
-![图 3.16 ET1100 供电连接](../../../../img/ethercat/ethercat-book/F046_p069.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F046_p069.png" alt="图 3.16 ET1100 供电连接">
 
 **配置引脚的核心特性：与 PDI 引脚或其他引脚复用，上电时作为输入被 ET1100 锁存，上电后恢复正常的操作功能。**
 
@@ -268,7 +268,7 @@ PDI（Physical Device Interface）是**ESC 与从站本地微处理器之间的�
 
 **图 3.17　ESC 内部数据帧传输顺序**（原书 p.69）
 
-![图 3.17 ESC 内部数据帧传输顺序](../../../../img/ethercat/ethercat-book/F048_p069.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F048_p069.png" alt="图 3.17 ESC 内部数据帧传输顺序">
 
 ESC 收到帧后按固定路径走：**端口 0 进 → 3 → 1 → 2 → 0 出**（第2章 2.1.2）。数据帧处理单元负责：
 
@@ -509,7 +509,7 @@ ESC 支持两种内部看门狗：
 
 **图 3.18　SM 通道缓存区分配**（原书 p.70）
 
-![图 3.18 SM 通道缓存区分配](../../../../img/ethercat/ethercat-book/F049_p070.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F049_p070.png" alt="图 3.18 SM 通道缓存区分配">
 
 **要解决的问题**：ESC 里的存储区被**两个主人**同时访问——**EtherCAT 主站**（从网线那边读写）和**本地微处理器**（从 PDI 那边读写）。如果不管，就会出错：
 
@@ -556,7 +556,7 @@ ESC 支持两种内部看门狗：
 
 **图 3.19　SM 缓存区运行原理（3 个缓存区模式）**（原书 p.83）
 
-![图 3.19 SM 缓存区运行原理（3 个缓存区模式）](../../../../img/ethercat/ethercat-book/F050_p083.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F050_p083.png" alt="图 3.19 SM 缓存区运行原理（3 个缓存区模式）">
 
 **常用于周期性过程数据通信。**
 
@@ -600,7 +600,7 @@ ESC 支持两种内部看门狗：
 
 **图 3.20　邮箱数据通信机制**（原书 p.84）
 
-![图 3.20 邮箱数据通信机制](../../../../img/ethercat/ethercat-book/F051_p084.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F051_p084.png" alt="图 3.20 邮箱数据通信机制">
 
 **邮箱模式使用一个缓存区，带握手机制，所以不会丢失数据。**
 
@@ -648,11 +648,11 @@ ESC 用 **EEPROM** 存储设备相关信息，这套信息就叫**从站信息�
 
 **图 3.21　EEPROM 数据布局**（原书 p.85）
 
-![图 3.21 EEPROM 数据布局](../../../../img/ethercat/ethercat-book/F052_p085.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F052_p085.png" alt="图 3.21 EEPROM 数据布局">
 
 **图 3.22　EEPROM 分类数据结构图**（原书 p.87）
 
-![图 3.22 EEPROM 分类数据结构图](../../../../img/ethercat/ethercat-book/F053_p087.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F053_p087.png" alt="图 3.22 EEPROM 分类数据结构图">
 
 EEPROM 使用**字地址**，**字 0~63 是必须的基本信息**：
 
@@ -797,15 +797,15 @@ ESC 具有读写 EEPROM 的功能。主站或 PDI 通过读写 ESC 的 **EEPROM 
 
 **图 3.23　同步信号的 4 种运行模式**（原书 p.88）
 
-![图 3.23 同步信号的 4 种运行模式](../../../../img/ethercat/ethercat-book/F054_p088.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F054_p088.png" alt="图 3.23 同步信号的 4 种运行模式">
 
 **图 3.24　SYNC1 信号产生示意**（原书 p.94）
 
-![图 3.24 SYNC1 信号产生示意](../../../../img/ethercat/ethercat-book/F055_p094.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F055_p094.png" alt="图 3.24 SYNC1 信号产生示意">
 
 **图 3.25　同步信号产生与 SYNC0/SYNC1 关系**（原书 p.95）
 
-![图 3.25 同步信号产生与 SYNC0/SYNC1 关系](../../../../img/ethercat/ethercat-book/F056_p095.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F056_p095.png" alt="图 3.25 同步信号产生与 SYNC0/SYNC1 关系">
 
 #### 1. 同步信号 SYNC0 / SYNC1
 

@@ -25,7 +25,7 @@ EtherCAT 充分利用以太网的**全双工**特性，使用**主从模式**的
 
 **图 2.1　EtherCAT 主站组成**（原书 p.17）
 
-![图 2.1 EtherCAT 主站组成](../../../../img/ethercat/ethercat-book/F003_p017.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F003_p017.png" alt="图 2.1 EtherCAT 主站组成">
 
 主站使用**标准的以太网控制器**，传输介质通常用 **100BASE-TX 规范的 5 类 UTP 线缆**。
 
@@ -46,11 +46,11 @@ EtherCAT 充分利用以太网的**全双工**特性，使用**主从模式**的
 
 **图 2.2　EtherCAT 物理层连接原理图**（原书 p.18）
 
-![图 2.2 EtherCAT 物理层连接原理图](../../../../img/ethercat/ethercat-book/F004_p018.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F004_p018.png" alt="图 2.2 EtherCAT 物理层连接原理图">
 
 **图 2.3　EtherCAT 从站组成**（原书 p.18）
 
-![图 2.3 EtherCAT 从站组成](../../../../img/ethercat/ethercat-book/F005_p018.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F005_p018.png" alt="图 2.3 EtherCAT 从站组成">
 
 一个从站同时干两件事：**通信**和**控制应用**。由四部分组成：
 
@@ -92,11 +92,11 @@ ESC 有 4 个端口，每个都能收发以太网帧。**帧在 ESC 内部的传
 
 **图 2.4　ESC 数据传输顺序（数据从端口 0 进、端口 3 出）**（原书 p.19）
 
-![图 2.4 ESC 数据传输顺序（数据从端口 0 进、端口 3 出）](../../../../img/ethercat/ethercat-book/F006_p019.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F006_p019.png" alt="图 2.4 ESC 数据传输顺序（数据从端口 0 进、端口 3 出）">
 
 **图 2.5　EtherCAT 线型拓扑结构**（原书 p.20）
 
-![图 2.5 EtherCAT 线型拓扑结构](../../../../img/ethercat/ethercat-book/F007_p020.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F007_p020.png" alt="图 2.5 EtherCAT 线型拓扑结构">
 
 **逻辑上**，EtherCAT 网段内的从站构成一个**开口的环型总线**：
 
@@ -117,7 +117,7 @@ ESC 有 4 个端口，每个都能收发以太网帧。**帧在 ESC 内部的传
 
 **图 2.6　EtherCAT 报文嵌入以太网数据帧**（原书 p.21）
 
-![图 2.6 EtherCAT 报文嵌入以太网数据帧](../../../../img/ethercat/ethercat-book/F008_p021.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F008_p021.png" alt="图 2.6 EtherCAT 报文嵌入以太网数据帧">
 
 EtherCAT **直接使用以太网数据帧传输**，帧类型（EtherType）为 **0x88A4**。
 
@@ -174,7 +174,7 @@ EtherCAT **直接使用以太网数据帧传输**，帧类型（EtherType）为 
 
 **图 2.7　EtherCAT 数据帧嵌入 UDP 数据帧**（原书 p.22）
 
-![图 2.7 EtherCAT 数据帧嵌入 UDP 数据帧](../../../../img/ethercat/ethercat-book/F009_p022.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F009_p022.png" alt="图 2.7 EtherCAT 数据帧嵌入 UDP 数据帧">
 
 EtherCAT 数据也可以封装在 UDP/IP 里传输，**UDP 端口 0x88A4**。这样能穿过普通 IP 路由，代价是多了 20 字节 IP 头 + 8 字节 UDP 头的开销和协议栈延迟，实时性下降——一般只在调试或跨网段时才用。
 
@@ -184,7 +184,7 @@ EtherCAT 数据也可以封装在 UDP/IP 里传输，**UDP 端口 0x88A4**。这
 
 **图 2.8　EtherCAT 网络寻址模式（直连／开放）**（原书 p.23）
 
-![图 2.8 EtherCAT 网络寻址模式（直连／开放）](../../../../img/ethercat/ethercat-book/F010_p023.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F010_p023.png" alt="图 2.8 EtherCAT 网络寻址模式（直连／开放）">
 
 EtherCAT 通信的本质是：**主站发送 EtherCAT 数据帧，读写从站设备的内部存储区**。
 
@@ -206,19 +206,19 @@ EtherCAT 通信的本质是：**主站发送 EtherCAT 数据帧，读写从站�
 
 **图 2.9　直连模式中的 EtherCAT 网段**（原书 p.23）
 
-![图 2.9 直连模式中的 EtherCAT 网段](../../../../img/ethercat/ethercat-book/F011_p023.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F011_p023.png" alt="图 2.9 直连模式中的 EtherCAT 网段">
 
 **图 2.10　直连模式下 EtherCAT 网段寻址地址内容**（原书 p.23）
 
-![图 2.10 直连模式下 EtherCAT 网段寻址地址内容](../../../../img/ethercat/ethercat-book/F012_p023.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F012_p023.png" alt="图 2.10 直连模式下 EtherCAT 网段寻址地址内容">
 
 **图 2.11　开放模式中的 EtherCAT 网段**（原书 p.24）
 
-![图 2.11 开放模式中的 EtherCAT 网段](../../../../img/ethercat/ethercat-book/F013_p024.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F013_p024.png" alt="图 2.11 开放模式中的 EtherCAT 网段">
 
 **图 2.12　开放模式下 EtherCAT 网段寻址地址内容**（原书 p.24）
 
-![图 2.12 开放模式下 EtherCAT 网段寻址地址内容](../../../../img/ethercat/ethercat-book/F014_p024.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F014_p024.png" alt="图 2.12 开放模式下 EtherCAT 网段寻址地址内容">
 
 | 方式 | 连接 | 目的 MAC 地址 | 特点 |
 | :--- | :--- | :--- | :--- |
@@ -234,19 +234,19 @@ EtherCAT 通信的本质是：**主站发送 EtherCAT 数据帧，读写从站�
 
 **图 2.13　EtherCAT 设备寻址结构**（原书 p.25）
 
-![图 2.13 EtherCAT 设备寻址结构](../../../../img/ethercat/ethercat-book/F015_p025.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F015_p025.png" alt="图 2.13 EtherCAT 设备寻址结构">
 
 **图 2.14　顺序寻址时的从站地址**（原书 p.25）
 
-![图 2.14 顺序寻址时的从站地址](../../../../img/ethercat/ethercat-book/F016_p025.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F016_p025.png" alt="图 2.14 顺序寻址时的从站地址">
 
 **图 2.15　顺序寻址时子报文地址的变化**（原书 p.26）
 
-![图 2.15 顺序寻址时子报文地址的变化](../../../../img/ethercat/ethercat-book/F017_p026.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F017_p026.png" alt="图 2.15 顺序寻址时子报文地址的变化">
 
 **图 2.16　设置寻址时的从站地址和报文结构**（原书 p.26）
 
-![图 2.16 设置寻址时的从站地址和报文结构](../../../../img/ethercat/ethercat-book/F018_p026.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F018_p026.png" alt="图 2.16 设置寻址时的从站地址和报文结构">
 
 设备寻址时，子报文头内的 **32 位地址被拆成两半**：
 
@@ -302,11 +302,11 @@ EtherCAT 通信的本质是：**主站发送 EtherCAT 数据帧，读写从站�
 
 **图 2.17　现场总线内存管理单元（FMMU）运行原理**（原书 p.27）
 
-![图 2.17 现场总线内存管理单元（FMMU）运行原理](../../../../img/ethercat/ethercat-book/F019_p027.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F019_p027.png" alt="图 2.17 现场总线内存管理单元（FMMU）运行原理">
 
 **图 2.18　FMMU 映射举例**（原书 p.28）
 
-![图 2.18 FMMU 映射举例](../../../../img/ethercat/ethercat-book/F020_p028.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F020_p028.png" alt="图 2.18 FMMU 映射举例">
 
 逻辑寻址时，从站地址**不是单独定义的**，而是使用寻址段内 **4GB 逻辑地址空间**中的一段区域。子报文内的 32 位地址区作为**整体的数据逻辑地址**完成寻址。
 
@@ -422,7 +422,7 @@ EtherCAT 子报文的**所有服务都是以主站操作描述的**。数据链�
 
 **图 2.19　传输延时和时钟初始偏移量测量原理**（原书 p.31）
 
-![图 2.19 传输延时和时钟初始偏移量测量原理](../../../../img/ethercat/ethercat-book/F021_p031.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F021_p031.png" alt="图 2.19 传输延时和时钟初始偏移量测量原理">
 
 **测量原理**（第 ① 步）：主站发一个**广播写命令**数据帧，**每个从站分别保存每个端口收到帧前导符第一位（SOF）的时刻**。
 
@@ -459,7 +459,7 @@ EtherCAT 子报文的**所有服务都是以主站操作描述的**。数据链�
 
 **图 2.20　分布时钟同步原理**（原书 p.33）
 
-![图 2.20 分布时钟同步原理](../../../../img/ethercat/ethercat-book/F022_p033.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F022_p033.png" alt="图 2.20 分布时钟同步原理">
 
 每个设备的本地时钟**自由运行**，会与参考时钟产生漂移。同步的做法是：
 
@@ -515,23 +515,23 @@ T_sys_local(n) = T_local(n) − T_offset(n)
 
 **图 2.21　自由运行模式的本地周期**（原书 p.34）
 
-![图 2.21 自由运行模式的本地周期](../../../../img/ethercat/ethercat-book/F023_p034.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F023_p034.png" alt="图 2.21 自由运行模式的本地周期">
 
 **图 2.22　同步于数据输入或输出事件的本地周期**（原书 p.34）
 
-![图 2.22 同步于数据输入或输出事件的本地周期](../../../../img/ethercat/ethercat-book/F024_p034.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F024_p034.png" alt="图 2.22 同步于数据输入或输出事件的本地周期">
 
 **图 2.23　同步于 SYNC 事件的本地周期**（原书 p.35）
 
-![图 2.23 同步于 SYNC 事件的本地周期](../../../../img/ethercat/ethercat-book/F025_p035.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F025_p035.png" alt="图 2.23 同步于 SYNC 事件的本地周期">
 
 **图 2.24　优化的同步于 SYNC 事件的本地周期**（原书 p.35）
 
-![图 2.24 优化的同步于 SYNC 事件的本地周期](../../../../img/ethercat/ethercat-book/F026_p035.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F026_p035.png" alt="图 2.24 优化的同步于 SYNC 事件的本地周期">
 
 **图 2.25　主站与从站的同步运行模式**（原书 p.36）
 
-![图 2.25 主站与从站的同步运行模式](../../../../img/ethercat/ethercat-book/F027_p036.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F027_p036.png" alt="图 2.25 主站与从站的同步运行模式">
 
 通常**使用 FMMU 逻辑寻址**，主站可以用逻辑读、写或读写命令**同时操作多个从站**。
 
@@ -579,7 +579,7 @@ T_sys_local(n) = T_local(n) − T_offset(n)
 
 **图 2.26　邮箱数据单元结构**（原书 p.37）
 
-![图 2.26 邮箱数据单元结构](../../../../img/ethercat/ethercat-book/F028_p037.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F028_p037.png" alt="图 2.26 邮箱数据单元结构">
 
 EtherCAT 中的非周期通信叫**邮箱数据通信（Mailbox）**。
 
@@ -637,7 +637,7 @@ EtherCAT 中的非周期通信叫**邮箱数据通信（Mailbox）**。
 
 **图 2.27　EtherCAT 状态转化关系**（原书 p.39）
 
-![图 2.27 EtherCAT 状态转化关系](../../../../img/ethercat/ethercat-book/F029_p039.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F029_p039.png" alt="图 2.27 EtherCAT 状态转化关系">
 
 **EtherCAT 状态机 ESM**（EtherCAT State Machine）负责协调**主站和从站应用程序在初始化和运行时的状态关系**。
 
@@ -710,7 +710,7 @@ EtherCAT 设备必须支持 **4 种状态**，另有 **1 个可选状态**：
 
 **图 2.28　EtherCAT 协议结构**（原书 p.40）
 
-![图 2.28 EtherCAT 协议结构](../../../../img/ethercat/ethercat-book/F030_p040.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F030_p040.png" alt="图 2.28 EtherCAT 协议结构">
 
 **应用层 AL**（Application Layer）是 EtherCAT 协议最高的功能层，**直接面向控制任务**：
 

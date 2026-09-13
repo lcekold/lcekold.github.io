@@ -52,7 +52,7 @@ PHY 是 ESC 和网线之间的物理层芯片，选错了从站要么不通信�
 
 **图 4.1　Atmega128 控制的 EtherCAT 从站接口卡示意图**（原书 p.103）
 
-![图 4.1 Atmega128 控制的 EtherCAT 从站接口卡示意图](../../../../img/ethercat/ethercat-book/F057_p103.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F057_p103.png" alt="图 4.1 Atmega128 控制的 EtherCAT 从站接口卡示意图">
 
 本书编者做的板子：用 AVR 单片机控制 ET1100 实现 EtherCAT 基本通信。组成共 5 部分：
 
@@ -70,19 +70,19 @@ PHY 是 ESC 和网线之间的物理层芯片，选错了从站要么不通信�
 
 **图 4.2　ET1100 连接图**（原书 p.104）
 
-![图 4.2 ET1100 连接图](../../../../img/ethercat/ethercat-book/F058_p104.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F058_p104.png" alt="图 4.2 ET1100 连接图">
 
 **图 4.3　ET1100 时钟源和 EEPROM 接线图**（原书 p.104）
 
-![图 4.3 ET1100 时钟源和 EEPROM 接线图](../../../../img/ethercat/ethercat-book/F059_p104.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F059_p104.png" alt="图 4.3 ET1100 时钟源和 EEPROM 接线图">
 
 **图 4.4　ET1100 电源引脚接线图**（原书 p.105）
 
-![图 4.4 ET1100 电源引脚接线图](../../../../img/ethercat/ethercat-book/F060_p105.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F060_p105.png" alt="图 4.4 ET1100 电源引脚接线图">
 
 **图 4.5　ET1100 时钟源（晶振）连接**（原书 p.105）
 
-![图 4.5 ET1100 时钟源（晶振）连接](../../../../img/ethercat/ethercat-book/F061_p105.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F061_p105.png" alt="图 4.5 ET1100 时钟源（晶振）连接">
 
 - ET1100 使用 **8 位异步微处理器 PDI 接口**；
 - 连接**两个 MII 接口**（两个网口才能串成环），并**输出时钟信号给 PHY**；
@@ -92,7 +92,7 @@ PHY 是 ESC 和网线之间的物理层芯片，选错了从站要么不通信�
 
 **图 4.6　ET1100 配置引脚连接图**（原书 p.106）
 
-![图 4.6 ET1100 配置引脚连接图](../../../../img/ethercat/ethercat-book/F062_p106.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F062_p106.png" alt="图 4.6 ET1100 配置引脚连接图">
 
 配置引脚与 PDI 引脚或其他引脚**复用**：**上电时它们作为输入，由 ET1100 锁存配置信息**；上电后这些引脚都恢复为各自的操作功能，必要时方向也可以改变。**RESET 引脚信号指示上电配置完成**。
 
@@ -118,7 +118,7 @@ PHY 是 ESC 和网线之间的物理层芯片，选错了从站要么不通信�
 
 **图 4.7　ET1100 与 KS8721BL PHY 器件接线图**（原书 p.108）
 
-![图 4.7 ET1100 与 KS8721BL PHY 器件接线图](../../../../img/ethercat/ethercat-book/F063_p108.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F063_p108.png" alt="图 4.7 ET1100 与 KS8721BL PHY 器件接线图">
 
 ET1100 的 MII 相关引脚分三类：
 
@@ -155,7 +155,7 @@ ET1100 的 MII 相关引脚分三类：
 
 **图 4.8　直接 IO 控制 ET1100 接线图**（原书 p.110）
 
-![图 4.8 直接 IO 控制 ET1100 接线图](../../../../img/ethercat/ethercat-book/F064_p110.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F064_p110.png" alt="图 4.8 直接 IO 控制 ET1100 接线图">
 
 ET1100 与 8 位微处理器之间：**8 位数据线 D0~D7 + 14 位地址线 A0~A13**，加上一组控制线。
 
@@ -178,11 +178,11 @@ ET1100 与 8 位微处理器之间：**8 位数据线 D0~D7 + 14 位地址线 A0
 
 **图 4.9　光电隔离输出信号接线**（原书 p.111）
 
-![图 4.9 光电隔离输出信号接线](../../../../img/ethercat/ethercat-book/F065_p111.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F065_p111.png" alt="图 4.9 光电隔离输出信号接线">
 
 **图 4.10　光电隔离输入信号接线**（原书 p.111）
 
-![图 4.10 光电隔离输入信号接线](../../../../img/ethercat/ethercat-book/F066_p111.png)
+<img src="https://cdn.jsdelivr.net/gh/lcekold/lcekold.github.io/img/ethercat/ethercat-book/F066_p111.png" alt="图 4.10 光电隔离输入信号接线">
 
 把 ET1100 的 **PDI 接口配置为 IO 控制**，ET1100 就能**直接控制 32 位数字量 I/O**——不需要微处理器。作者做了 16 位数字量输入 + 16 位数字量输出的 I/O 控制卡：
 
